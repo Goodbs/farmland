@@ -6,7 +6,7 @@ import Verification from "./Verification.jsx";
 import FarmScore from "./FarmScore.jsx";
 import Marketplace from "./Marketplace.jsx";
 import BuyUnits from "./BuyUnits.jsx";
-import PurchaseSuccess from "./PurchaseSuccess.jsx";
+import Payment from "./Payment.jsx";
 import Portfolio from "./Portfolio.jsx";
 
 function PropertyFlow() {
@@ -14,7 +14,17 @@ function PropertyFlow() {
   const [property, setProperty] = useState(null);
   const [purchase, setPurchase] = useState(null);
 
-  // STEP 1 - PROPERTY OWNERSHIP
+  // HOME
+  if (page === "home") {
+    return (
+      <App
+        onFarmer={() => setPage("ownership")}
+        onInvestor={() => setPage("marketplace")}
+      />
+    );
+  }
+
+  // STEP 1: OWNERSHIP
   if (page === "ownership") {
     return (
       <Ownership
@@ -27,7 +37,7 @@ function PropertyFlow() {
     );
   }
 
-  // STEP 2 - VERIFICATION
+  // STEP 2: VERIFICATION
   if (page === "verification") {
     return (
       <Verification
@@ -38,7 +48,7 @@ function PropertyFlow() {
     );
   }
 
-  // STEP 3 - FARM SCORE
+  // STEP 3: FARM SCORE
   if (page === "farmscore") {
     return (
       <FarmScore
@@ -62,26 +72,28 @@ function PropertyFlow() {
     );
   }
 
-  // BUY FARM UNITS
+  // BUY UNITS
   if (page === "buy") {
     return (
       <BuyUnits
-        property={property}
-        onContinue={(purchaseData) => {
-          setPurchase(purchaseData);
-          setPage("success");
-        }}
+        farm={property}
         onBack={() => setPage("marketplace")}
+        onPurchase={(purchaseData) => {
+          setPurchase(purchaseData);
+          setPage("payment");
+        }}
       />
     );
   }
 
-  // PURCHASE SUCCESS
-  if (page === "success") {
+  // PAYMENT
+  if (page === "payment") {
     return (
-      <PurchaseSuccess
+      <Payment
+        property={property}
         purchase={purchase}
-        onPortfolio={() => setPage("portfolio")}
+        onBack={() => setPage("buy")}
+        onSuccess={() => setPage("portfolio")}
       />
     );
   }
@@ -91,19 +103,14 @@ function PropertyFlow() {
     return (
       <Portfolio
         purchase={purchase}
+        property={property}
         onMarketplace={() => setPage("marketplace")}
         onHome={() => setPage("home")}
       />
     );
   }
 
-  // HOME PAGE
-  return (
-    <App
-      onFarmer={() => setPage("ownership")}
-      onInvestor={() => setPage("marketplace")}
-    />
-  );
+  return <App />;
 }
 
 export default PropertyFlow;
