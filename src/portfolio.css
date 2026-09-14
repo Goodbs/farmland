@@ -1,0 +1,477 @@
+/* ========================================
+   PORTFOLIO
+======================================== */
+
+.portfolio-page {
+  min-height: 100vh;
+  padding-bottom: 80px;
+
+  background: var(--background);
+}
+
+/* HEADER */
+
+.portfolio-header {
+  width: min(100% - 48px, 1180px);
+  margin: 0 auto;
+  padding: 24px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.portfolio-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.portfolio-brand > div {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--green);
+  color: white;
+
+  border-radius: 11px;
+}
+
+/* HERO */
+
+.portfolio-hero {
+  width: min(100% - 48px, 1180px);
+  margin: 40px auto;
+
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.portfolio-hero h1 {
+  margin-top: 14px;
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(42px, 6vw, 64px);
+  line-height: 1.1;
+}
+
+.portfolio-hero h1 span {
+  color: var(--green);
+}
+
+.portfolio-hero p {
+  max-width: 550px;
+  margin-top: 18px;
+
+  color: var(--muted);
+
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* EXPLORE BUTTON */
+
+.explore-button {
+  padding: 14px 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  background: var(--green);
+  color: white;
+
+  border: none;
+  border-radius: 12px;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+/* SUMMARY */
+
+.portfolio-summary {
+  width: min(100% - 48px, 1180px);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.portfolio-stat {
+  padding: 22px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  background: white;
+
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.portfolio-stat-icon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--green-light);
+  color: var(--green);
+
+  border-radius: 13px;
+}
+
+.portfolio-stat span {
+  display: block;
+
+  color: var(--muted);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 0.8px;
+}
+
+.portfolio-stat strong {
+  display: block;
+
+  margin-top: 6px;
+
+  color: var(--text);
+
+  font-size: 18px;
+}
+
+/* CONTENT */
+
+.portfolio-content {
+  width: min(100% - 48px, 1180px);
+  margin: 55px auto 0;
+}
+
+.portfolio-content-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+
+  margin-bottom: 22px;
+}
+
+.portfolio-content-header h2 {
+  margin-top: 8px;
+
+  font-size: 26px;
+}
+
+.ownership-count {
+  padding: 8px 12px;
+
+  background: var(--green-light);
+  color: var(--green);
+
+  border-radius: 20px;
+
+  font-size: 10px;
+  font-weight: 800;
+}
+
+/* FARM CARD */
+
+.portfolio-farm-card {
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: 280px 1fr;
+
+  background: white;
+
+  border: 1px solid var(--border);
+  border-radius: 20px;
+
+  box-shadow: var(--shadow);
+}
+
+/* FARM IMAGE */
+
+.portfolio-farm-image {
+  min-height: 280px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dceee1,
+      #b9d7c0
+    );
+
+  color: var(--green);
+}
+
+.portfolio-farm-image span {
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+/* FARM INFO */
+
+.portfolio-farm-info {
+  padding: 28px;
+}
+
+.portfolio-farm-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.portfolio-farm-top h2 {
+  font-size: 24px;
+}
+
+.portfolio-farm-top p {
+  margin-top: 8px;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+}
+
+.portfolio-score {
+  width: 52px;
+  height: 52px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--green);
+  color: white;
+
+  border-radius: 50%;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* DETAILS */
+
+.portfolio-details {
+  margin-top: 30px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.portfolio-details > div {
+  padding: 16px;
+
+  background: #fafbf9;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.portfolio-details span {
+  display: block;
+
+  color: var(--muted);
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 0.8px;
+}
+
+.portfolio-details strong {
+  display: block;
+
+  margin-top: 8px;
+
+  color: var(--green);
+
+  font-size: 14px;
+}
+
+/* CARD FOOTER */
+
+.portfolio-card-footer {
+  margin-top: 22px;
+  padding-top: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-top: 1px solid var(--border);
+
+  color: var(--muted);
+
+  font-size: 11px;
+}
+
+.portfolio-card-footer svg {
+  color: var(--green);
+}
+
+/* EMPTY */
+
+.portfolio-empty {
+  padding: 60px 25px;
+
+  text-align: center;
+
+  background: white;
+
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+.portfolio-empty svg {
+  color: var(--green);
+}
+
+.portfolio-empty h2 {
+  margin-top: 18px;
+
+  font-size: 24px;
+}
+
+.portfolio-empty p {
+  max-width: 350px;
+  margin: 10px auto 0;
+
+  color: var(--muted);
+
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.portfolio-empty button {
+  margin-top: 22px;
+  padding: 13px 18px;
+
+  background: var(--green);
+  color: white;
+
+  border: none;
+  border-radius: 11px;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+  .portfolio-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .portfolio-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-farm-card {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-farm-image {
+    min-height: 180px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+  .portfolio-header,
+  .portfolio-hero,
+  .portfolio-summary,
+  .portfolio-content {
+    width: min(100% - 32px, 1180px);
+  }
+
+  .portfolio-header {
+    padding: 18px 0;
+  }
+
+  .portfolio-brand span {
+    display: none;
+  }
+
+  .portfolio-hero {
+    margin: 20px auto 30px;
+  }
+
+  .portfolio-hero h1 {
+    font-size: 42px;
+  }
+
+  .portfolio-summary {
+    gap: 12px;
+  }
+
+  .portfolio-stat {
+    padding: 18px;
+  }
+
+  .portfolio-content {
+    margin-top: 40px;
+  }
+
+  .portfolio-content-header h2 {
+    font-size: 22px;
+  }
+
+  .portfolio-farm-info {
+    padding: 20px 16px;
+  }
+
+  .portfolio-farm-top h2 {
+    font-size: 20px;
+  }
+
+  .portfolio-details {
+    grid-template-columns: 1fr;
+  }
+
+  .explore-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
