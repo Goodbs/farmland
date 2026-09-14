@@ -11,19 +11,13 @@ import {
 
 import "./buyunits.css";
 
-function BuyUnits({
-  farm,
-  onBack,
-  onPurchase
-}) {
+function BuyUnits({ farm, onBack, onPurchase }) {
   const [quantity, setQuantity] = useState(1);
 
-  const unitPrice = farm?.unitPrice || 0;
-  const availableUnits =
-    farm?.availableUnits || 0;
+  const unitPrice = Number(farm?.unitPrice || 0);
+  const availableUnits = Number(farm?.availableUnits || 0);
 
-  const total =
-    quantity * unitPrice;
+  const total = quantity * unitPrice;
 
   const increaseQuantity = () => {
     if (quantity < availableUnits) {
@@ -37,14 +31,25 @@ function BuyUnits({
     }
   };
 
+  const handlePurchase = () => {
+    if (!farm || availableUnits < 1) return;
+
+    if (onPurchase) {
+      onPurchase({
+        farm,
+        quantity,
+        unitPrice,
+        total
+      });
+    }
+  };
+
   return (
     <div className="buyunits-page">
 
-      {/* HEADER */}
-
       <header className="buyunits-header">
-
         <button
+          type="button"
           className="back-button"
           onClick={onBack}
         >
@@ -53,22 +58,14 @@ function BuyUnits({
         </button>
 
         <div className="buyunits-brand">
-
           <div>
             <Sprout size={20} />
           </div>
-
           <span>FarmLand</span>
-
         </div>
-
       </header>
 
-      {/* MAIN */}
-
       <main className="buyunits-content">
-
-        {/* FARM INFO */}
 
         <section className="buyunits-intro">
 
@@ -87,13 +84,11 @@ function BuyUnits({
           </p>
 
           <div className="selected-farm">
-
             <div className="selected-farm-icon">
               <Sprout size={28} />
             </div>
 
             <div>
-
               <span>SELECTED FARM</span>
 
               <strong>
@@ -101,6 +96,128 @@ function BuyUnits({
               </strong>
 
               <p>
+                FarmScore: {farm?.score || 0}
+              </p>
+            </div>
+          </div>
+
+          <div className="buyunits-features">
+
+            <div>
+              <ShieldCheck size={19} />
+              <span>Verified property profile</span>
+            </div>
+
+            <div>
+              <Wallet size={19} />
+              <span>Wallet payment on testnet</span>
+            </div>
+
+            <div>
+              <CheckCircle2 size={19} />
+              <span>Transparent unit ownership</span>
+            </div>
+
+          </div>
+        </section>
+
+        <section className="purchase-card">
+
+          <div className="purchase-card-header">
+            <div>
+              <span>PURCHASE UNITS</span>
+              <h2>{farm?.name || "Selected Farm"}</h2>
+            </div>
+
+            <div className="purchase-score">
+              {farm?.score || 0}
+            </div>
+          </div>
+
+          <div className="unit-price-box">
+            <span>PRICE PER UNIT</span>
+            <strong>{unitPrice} SOL</strong>
+          </div>
+
+          <div className="quantity-section">
+
+            <div className="quantity-label">
+              <span>NUMBER OF UNITS</span>
+
+              <strong>
+                Available: {availableUnits.toLocaleString()}
+              </strong>
+            </div>
+
+            <div className="quantity-control">
+
+              <button
+                type="button"
+                onClick={decreaseQuantity}
+                disabled={quantity <= 1}
+              >
+                <Minus size={18} />
+              </button>
+
+              <strong>
+                {quantity.toLocaleString()}
+              </strong>
+
+              <button
+                type="button"
+                onClick={increaseQuantity}
+                disabled={
+                  availableUnits < 1 ||
+                  quantity >= availableUnits
+                }
+              >
+                <Plus size={18} />
+              </button>
+
+            </div>
+          </div>
+
+          <div className="purchase-summary">
+
+            <div>
+              <span>Units</span>
+              <strong>{quantity.toLocaleString()}</strong>
+            </div>
+
+            <div>
+              <span>Price per unit</span>
+              <strong>{unitPrice} SOL</strong>
+            </div>
+
+            <div className="purchase-total">
+              <span>TOTAL</span>
+              <strong>{total.toFixed(4)} SOL</strong>
+            </div>
+
+          </div>
+
+          <button
+            type="button"
+            className="confirm-purchase-button"
+            onClick={handlePurchase}
+            disabled={!farm || availableUnits < 1}
+          >
+            <Wallet size={18} />
+            Continue to Payment
+          </button>
+
+          <p className="purchase-note">
+            Testnet transaction. No real funds are used.
+          </p>
+
+        </section>
+
+      </main>
+    </div>
+  );
+}
+
+export default BuyUnits;              <p>
                 FarmScore: {farm?.score || 0}
               </p>
 
