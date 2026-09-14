@@ -24,10 +24,10 @@ function Ownership({ onContinue, onBack }) {
   const [error, setError] = useState("");
 
   const updateField = (field, value) => {
-    setForm({
-      ...form,
+    setForm((previous) => ({
+      ...previous,
       [field]: value
-    });
+    }));
 
     setError("");
   };
@@ -52,7 +52,9 @@ function Ownership({ onContinue, onBack }) {
       id: `FARM-${Date.now()}`
     };
 
-    onContinue?.(propertyData);
+    if (onContinue) {
+      onContinue(propertyData);
+    }
   };
 
   return (
@@ -82,7 +84,7 @@ function Ownership({ onContinue, onBack }) {
         </div>
 
         <div className="progress-bar">
-          <span></span>
+          <span />
         </div>
       </div>
 
@@ -103,6 +105,7 @@ function Ownership({ onContinue, onBack }) {
           </p>
 
           <div className="ownership-benefits">
+
             <div>
               <FileCheck size={20} />
               <div>
@@ -134,6 +137,7 @@ function Ownership({ onContinue, onBack }) {
                 </span>
               </div>
             </div>
+
           </div>
         </section>
 
@@ -141,6 +145,7 @@ function Ownership({ onContinue, onBack }) {
           className="ownership-form"
           onSubmit={handleSubmit}
         >
+
           <div className="form-header">
             <div className="form-icon">
               <Sprout size={24} />
@@ -191,6 +196,7 @@ function Ownership({ onContinue, onBack }) {
           </div>
 
           <div className="form-row">
+
             <div className="form-group">
               <label>Land Size *</label>
               <input
@@ -218,6 +224,7 @@ function Ownership({ onContinue, onBack }) {
                 <option>Sq. Meters</option>
               </select>
             </div>
+
           </div>
 
           <div className="form-group">
@@ -234,6 +241,7 @@ function Ownership({ onContinue, onBack }) {
 
           <div className="form-group">
             <label>Ownership Type</label>
+
             <select
               value={form.ownershipType}
               onChange={(event) =>
@@ -263,6 +271,7 @@ function Ownership({ onContinue, onBack }) {
             Continue
             <ArrowRight size={18} />
           </button>
+
         </form>
       </main>
     </div>
