@@ -14,6 +14,7 @@ function PropertyFlow() {
   const [property, setProperty] = useState(null);
   const [purchase, setPurchase] = useState(null);
 
+  // STEP 1 - PROPERTY OWNERSHIP
   if (page === "ownership") {
     return (
       <Ownership
@@ -26,6 +27,7 @@ function PropertyFlow() {
     );
   }
 
+  // STEP 2 - VERIFICATION
   if (page === "verification") {
     return (
       <Verification
@@ -36,6 +38,7 @@ function PropertyFlow() {
     );
   }
 
+  // STEP 3 - FARM SCORE
   if (page === "farmscore") {
     return (
       <FarmScore
@@ -46,6 +49,7 @@ function PropertyFlow() {
     );
   }
 
+  // MARKETPLACE
   if (page === "marketplace") {
     return (
       <Marketplace
@@ -58,6 +62,7 @@ function PropertyFlow() {
     );
   }
 
+  // BUY FARM UNITS
   if (page === "buy") {
     return (
       <BuyUnits
@@ -71,6 +76,7 @@ function PropertyFlow() {
     );
   }
 
+  // PURCHASE SUCCESS
   if (page === "success") {
     return (
       <PurchaseSuccess
@@ -80,6 +86,7 @@ function PropertyFlow() {
     );
   }
 
+  // PORTFOLIO
   if (page === "portfolio") {
     return (
       <Portfolio
@@ -90,6 +97,7 @@ function PropertyFlow() {
     );
   }
 
+  // HOME PAGE
   return (
     <App
       onFarmer={() => setPage("ownership")}
