@@ -11,8 +11,24 @@ import {
 
 import "./app.css";
 
-function App() {
+function App({ onFarmer, onInvestor }) {
   const [activeRole, setActiveRole] = useState(null);
+
+  const startFarmer = () => {
+    setActiveRole("farmer");
+
+    if (onFarmer) {
+      onFarmer();
+    }
+  };
+
+  const startInvestor = () => {
+    setActiveRole("investor");
+
+    if (onInvestor) {
+      onInvestor();
+    }
+  };
 
   return (
     <div className="app">
@@ -38,14 +54,17 @@ function App() {
             Features
           </a>
 
-          <a href="#invest">
+          <button
+            type="button"
+            onClick={startInvestor}
+          >
             Invest
-          </a>
+          </button>
         </div>
 
         <button
           className="nav-button"
-          onClick={() => setActiveRole("investor")}
+          onClick={startInvestor}
         >
           Explore Farms
           <ArrowRight size={16} />
@@ -81,9 +100,7 @@ function App() {
 
             <button
               className="primary-button"
-              onClick={() =>
-                setActiveRole("farmer")
-              }
+              onClick={startFarmer}
             >
               <Sprout size={18} />
               List Your Farmland
@@ -91,9 +108,7 @@ function App() {
 
             <button
               className="secondary-button"
-              onClick={() =>
-                setActiveRole("investor")
-              }
+              onClick={startInvestor}
             >
               <TrendingUp size={18} />
               Invest in Farms
@@ -102,7 +117,6 @@ function App() {
           </div>
 
           {activeRole && (
-
             <div className="role-message">
 
               {activeRole === "farmer" ? (
@@ -110,8 +124,7 @@ function App() {
                   <Sprout size={20} />
 
                   <span>
-                    Farmer flow will start with
-                    property registration.
+                    Opening property registration...
                   </span>
                 </>
               ) : (
@@ -119,14 +132,12 @@ function App() {
                   <TrendingUp size={20} />
 
                   <span>
-                    Investor flow will open the
-                    farmland marketplace.
+                    Opening farmland marketplace...
                   </span>
                 </>
               )}
 
             </div>
-
           )}
 
         </div>
@@ -138,13 +149,9 @@ function App() {
           <div className="hero-card-top">
 
             <div>
-              <span>
-                FEATURED PROPERTY
-              </span>
+              <span>FEATURED PROPERTY</span>
 
-              <h2>
-                Green Valley Farm
-              </h2>
+              <h2>Green Valley Farm</h2>
             </div>
 
             <div className="verified-icon">
@@ -154,13 +161,8 @@ function App() {
           </div>
 
           <div className="farm-image">
-
             <Sprout size={64} />
-
-            <span>
-              VERIFIED FARMLAND
-            </span>
-
+            <span>VERIFIED FARMLAND</span>
           </div>
 
           <div className="farm-details">
@@ -184,9 +186,7 @@ function App() {
 
           <button
             className="card-button"
-            onClick={() =>
-              setActiveRole("investor")
-            }
+            onClick={startInvestor}
           >
             View Investment
             <ArrowRight size={17} />
@@ -203,33 +203,25 @@ function App() {
         <div>
           <Coins size={22} />
           <strong>Fractional Ownership</strong>
-          <span>
-            Buy farmland units with SOL
-          </span>
+          <span>Buy farmland units with SOL</span>
         </div>
 
         <div>
           <ShieldCheck size={22} />
           <strong>Land Verification</strong>
-          <span>
-            Transparent property records
-          </span>
+          <span>Transparent property records</span>
         </div>
 
         <div>
           <Users size={22} />
           <strong>Farmer Proposals</strong>
-          <span>
-            Vote on farm plans
-          </span>
+          <span>Vote on farm plans</span>
         </div>
 
         <div>
           <BarChart3 size={22} />
           <strong>Profit Tracking</strong>
-          <span>
-            Follow farm performance
-          </span>
+          <span>Follow farm performance</span>
         </div>
 
       </section>
@@ -257,15 +249,9 @@ function App() {
         <div className="steps-grid">
 
           <div className="step-card">
-            <span className="step-number">
-              01
-            </span>
-
+            <span className="step-number">01</span>
             <Sprout size={25} />
-
-            <h3>
-              Register Land
-            </h3>
+            <h3>Register Land</h3>
 
             <p>
               Landowners submit property details
@@ -274,15 +260,9 @@ function App() {
           </div>
 
           <div className="step-card">
-            <span className="step-number">
-              02
-            </span>
-
+            <span className="step-number">02</span>
             <ShieldCheck size={25} />
-
-            <h3>
-              Verify & Score
-            </h3>
+            <h3>Verify & Score</h3>
 
             <p>
               Properties are reviewed and receive
@@ -291,15 +271,9 @@ function App() {
           </div>
 
           <div className="step-card">
-            <span className="step-number">
-              03
-            </span>
-
+            <span className="step-number">03</span>
             <Coins size={25} />
-
-            <h3>
-              Invest in Units
-            </h3>
+            <h3>Invest in Units</h3>
 
             <p>
               Investors purchase fractional units
@@ -308,15 +282,9 @@ function App() {
           </div>
 
           <div className="step-card">
-            <span className="step-number">
-              04
-            </span>
-
+            <span className="step-number">04</span>
             <TrendingUp size={25} />
-
-            <h3>
-              Track Returns
-            </h3>
+            <h3>Track Returns</h3>
 
             <p>
               Follow farm performance and
@@ -359,19 +327,82 @@ function App() {
 
           <div>
             <ShieldCheck size={22} />
-            Verified property process
+            <span>Verified property process</span>
           </div>
 
           <div>
             <Coins size={22} />
-            Fractional farm units
+            <span>Fractional farm units</span>
           </div>
 
           <div>
             <Users size={22} />
-            Community proposals
+            <span>Community proposals</span>
           </div>
 
           <div>
             <BarChart3 size={22} />
-           
+            <span>Transparent profit tracking</span>
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* INVEST CTA */}
+
+      <section
+        className="invest-section"
+        id="invest"
+      >
+
+        <div>
+          <span className="section-label">
+            START TODAY
+          </span>
+
+          <h2>
+            Ready to explore
+            <span> real farmland?</span>
+          </h2>
+
+          <p>
+            Browse available farmland opportunities
+            and start your investment journey.
+          </p>
+        </div>
+
+        <button
+          className="primary-button"
+          onClick={startInvestor}
+        >
+          Explore Farms
+          <ArrowRight size={18} />
+        </button>
+
+      </section>
+
+      {/* FOOTER */}
+
+      <footer className="footer">
+
+        <div className="logo">
+          <div className="logo-icon">
+            <Sprout size={20} />
+          </div>
+
+          <span>FarmLand</span>
+        </div>
+
+        <p>
+          Transparent farmland ownership powered by
+          Solana.
+        </p>
+
+      </footer>
+
+    </div>
+  );
+}
+
+export default App;
