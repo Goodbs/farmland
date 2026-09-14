@@ -6,7 +6,6 @@ import Verification from "./Verification.jsx";
 import FarmScore from "./FarmScore.jsx";
 import Marketplace from "./Marketplace.jsx";
 import BuyUnits from "./BuyUnits.jsx";
-import WalletPage from "./Wallet.jsx";
 import PurchaseSuccess from "./PurchaseSuccess.jsx";
 import Portfolio from "./Portfolio.jsx";
 
@@ -65,19 +64,9 @@ function PropertyFlow() {
         property={property}
         onContinue={(purchaseData) => {
           setPurchase(purchaseData);
-          setPage("wallet");
+          setPage("success");
         }}
         onBack={() => setPage("marketplace")}
-      />
-    );
-  }
-
-  if (page === "wallet") {
-    return (
-      <WalletPage
-        purchase={purchase}
-        onSuccess={() => setPage("success")}
-        onBack={() => setPage("buy")}
       />
     );
   }
